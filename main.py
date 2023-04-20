@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from discord.ext import commands
 
-load_dotenv()
+load_dotenv('variables.env')
 TOKEN = os.getenv('TOKEN')
 
 #permissions object
@@ -13,6 +13,19 @@ intents.message_content= True
 intents.members = True
 
 client = discord.Client(intents=intents)
+
+def createRow():
+    row=[]
+    for col in range(3):
+        row+="-"
+    return row
+
+def getGameGrid():
+    chessBoard=[]
+    for i in range(3):
+        chessBoard+=[createRow()]
+    print(chessBoard)
+    return chessBoard
 
 @client.event
 async def on_ready():
@@ -48,6 +61,7 @@ async def accept(ctx, member: discord.User):
     pending_invites.pop(user.name)
     
     await ctx.send("Game Invitation Accepted")
+    getGameGrid()
 
 @accept.error
 async def accept_error(ctx, error):
