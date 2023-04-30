@@ -3,8 +3,9 @@ import os
 #import random
 from dotenv import load_dotenv
 from discord.ext import commands
+import board
 
-load_dotenv()
+load_dotenv('variables.env')
 TOKEN = os.getenv('TOKEN')
 
 #permissions object
@@ -48,6 +49,7 @@ async def accept(ctx, member: discord.User):
     pending_invites.pop(user.name)
     
     await ctx.send("Game Invitation Accepted")
+    await ctx.send(board.getGameGrid())
 
 @accept.error
 async def accept_error(ctx, error):
