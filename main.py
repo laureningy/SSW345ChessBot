@@ -49,7 +49,7 @@ async def accept(ctx, member: discord.User):
     pending_invites.pop(user.name)
     
     await ctx.send("Game Invitation Accepted")
-    await ctx.send(board.showBoard())
+    await ctx.send(board.getGameGrid())
 
 @accept.error
 async def accept_error(ctx, error):
