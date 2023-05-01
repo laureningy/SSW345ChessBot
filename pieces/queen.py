@@ -24,10 +24,19 @@ class Queen(Piece):
         moves the piece to a new square on the board
         updates current_square to input square if the move is legal
         '''
-        pass
+        if self.isValidMove(square):
+            self.current_square = square
+            return None
+        
+        return square
 
     def isValidMove(self, square):
         '''
         returns boolean of whether a move is logically valid
         '''
+        
+        #Queens can move like rooks and bishops combined
+        if abs(self.current_square - square) % 9 == 0 or abs(self.current_square - square) % 7 == 0 or abs(self.current_square - square) % 8 == 0 or abs(self.current_square - square) < 8:
+            return True
+        
         return False
