@@ -24,10 +24,20 @@ class Rook(Piece):
         moves the piece to a new square on the board
         updates current_square to input square if the move is legal
         '''
-        pass
+        if self.isValidMove(square):
+            self.current_square = square
+            return None
+        
+        return square
 
+    #TODO: Edge Case Logic
     def isValidMove(self, square):
         '''
         returns boolean of whether a move is logically valid
         '''
+
+        #rooks move in straight lines
+        if abs(self.current_square - square) % 8 == 0 or abs(self.current_square - square) < 8:
+            return True
+        
         return False

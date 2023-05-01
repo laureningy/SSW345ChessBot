@@ -24,10 +24,21 @@ class Knight(Piece):
         moves the piece to a new square on the board
         updates current_square to input square if the move is legal
         '''
-        pass
+        if self.isValidMove(square):
+            self.current_square = square
+            return None
+        
+        return square
 
+    #TODO: Edge Case Logic
     def isValidMove(self, square):
         '''
         returns boolean of whether a move is logically valid
         '''
+        knight_moves = [17, 15, 10, 6]
+
+        #knights move in an L-shape, up/down 2 and left/right 1 or up/down 1 and left/right 2
+        if abs(self.current_square - square) in knight_moves:
+            return True
+
         return False

@@ -24,10 +24,20 @@ class Bishop(Piece):
         moves the piece to a new square on the board
         updates current_square to input square if the move is legal
         '''
-        pass
-
+        if self.isValidMove(square):
+            self.current_square = square
+            return None
+        
+        return square
+        
+    #TODO: Edge Case Logic
     def isValidMove(self, square):
         '''
         returns boolean of whether a move is logically valid
         '''
+
+        #bishops can only move diagonally, if the difference between the square numbers is 7 or 9, this indicates a diagonal movement (with a couple edge cases)
+        if abs(self.current_square - square) % 9 == 0 or abs(self.current_square - square) % 7 == 0:
+            return True
+        
         return False
