@@ -30,6 +30,7 @@ class Rook(Piece):
         
         return square
 
+    #TODO: Edge Case Logic
     def isValidMove(self, square):
         '''
         returns boolean of whether a move is logically valid
